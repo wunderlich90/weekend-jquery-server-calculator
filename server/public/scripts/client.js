@@ -2,6 +2,13 @@ $(document).ready(onReady);
 
 function onReady() {
     console.log('Ready!');
+
+    // On page load get calculations from server
+    getCalculations();
+
+    console.log('add button', $('#addButton'));
+    $('#addButton').on('click, ')
+    
     
 }
 
@@ -13,10 +20,25 @@ function getCalculations() {
         //Tell AJAX what endpoint to hit
         method: 'GET',
         url: '/calculations'
-    })
-
-        .then((response) function() {
-            console.log('GET /calculations response');
+    }).then((response) => {
+            console.log('GET /calculations response', response);
             
-        })
+            // Render calculations with jQuery
+            let calculationsList = $('#calculations');
+            console.log('calculations list element', calculationsList);
+
+            // loop thropugh the array of calculations
+            calculationsList.empty();
+            for(let i=0; i<response.length; i++) {
+                let calculation = response[i];
+                // Render <li> with each calculation
+                calculationsList.append(`
+                    <li>
+                        ${calculation.inputOne}
+                    </li>
+                `);
+
+            }
+             
+        });
 }

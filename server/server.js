@@ -10,26 +10,26 @@ const bodyParser = require('body-parser');
 const app = express();
 
 // Data
-const calculations = [
+const calculationsArray = [
     {
-        numberOne: 2,
-        numberTwo: 3,
-        total: numberOne + numberTwo
+        inputOne: 2,
+        inputTwo: 3,
+        total: 5
     },
     {
-        numberOne: 6,
-        numberTwo: 3,
-        total: numberOne - numberTwo
+        inputOne: 6,
+        inputTwo: 3,
+        total: 3
     },
     {
-        numberOne: 5,
-        numberTwo: 4,
-        total: numberOne * numberTwo
+        inputOne: 5,
+        inputTwo: 4,
+        total: 20
     },
     {
-        numberOne: 2,
-        numberTwo: 3,
-        total: numberOne / numberTwo
+        inputOne: 6,
+        inputTwo: 3,
+        total: 2
     }
 ]
 
@@ -40,14 +40,14 @@ app.use(express.static('./server/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true }));
 
-// Listen for requests coming from a specifis url
+// Listen for requests coming from a specific url
 // http://localhost:5000/calculations
 app.get('/calculations', function(req, res) {
     console.log('Ready to send back some calculations');
     console.log('request.route.path is', req.route.path);
 
     // Send data back to the client
-    res.send(calculations[0]);
+    res.send(calculationsArray);
     
 });
 
@@ -80,3 +80,16 @@ app.listen(port, function(){
     console.log('App is up and running on localhost:5000');
     
 });
+
+function calculator() {
+
+}
+
+function add(inputOne, inputTwo) {
+    let sumTotal = inputOne = inputTwo;
+    return sumTotal;
+}
+
+
+
+

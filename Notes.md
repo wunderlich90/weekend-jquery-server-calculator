@@ -1,6 +1,6 @@
 TODO
 
-[ ] Logic for the calculaotor MUST be on the server side
+[ ] Logic for the calculator MUST be on the server side
 [ ] Create a user interface that inputs two values and performs a mathematical
     operation
     [x] Server Side Calculator title
