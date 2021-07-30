@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/client.js"></script>
+</head>
+
+<body>
+    <h1>Server Side Calculator
+        <div id="calculator">
+            <input class="inputFields" id="numberOne" type="number"/>
+
+            <button class="calcButtons" id="plusButton">+</button>
+            <button class="calcButtons" id="minusButton">-</button>
+            <button class="calcButtons" id="multiplyButton">*</button>
+            <button class="calcButtons" id="divideButton">/</button>
+        
+            <input class="inputFields" id="numberTwo" type="number"/>
+        
+            <button class="calcButtons" id="equalsButton">=</button>
+            <button class="calcButtons" id="clearButton">C</button>
+        
+            <div id="totalField">0</div>
+        
+            <div id="calcHistory">
+                <ul id="calculations">
+                    <!--Calculation history goes here-->
+                </ul>
+            </div>
+        </div>
+    </h1>
+
+    
+</body>
+</html>
