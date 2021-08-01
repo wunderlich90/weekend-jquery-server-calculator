@@ -1,12 +1,5 @@
 $(document).ready(onReady);
 
-// Declare global object
-let newCalculation = {
-    inputOne: $('#inputOne').val(),
-    mathOperatorInput: $(this).attr('id'),
-    inputTwo: $('#inputTwo').val(),
-};
-
 
 function onReady() {
     console.log('Ready!');
@@ -16,28 +9,46 @@ function onReady() {
 
     console.log('equals button', $('#equalsButton'));
 
+    // Listener for the equals button
     $('#equalsButton').on('click', addCalculation);
 
+    // Listener for all buttons in the calcButtons class
     $('.calcButtons').on('click', mathOperators);
+
+    // //Listener for the clear button
+    // $('#clearButton').on('click', clearButton);
 
        
 }
+// Declare global object
+let newCalculation = {
+    inputOne: $('#inputOne').val(),
+    inputTwo: $('#inputTwo').val(),
+};
 
- function mathOperators () {
-     let mathOperator = $(this).attr('id')
-     console.log(mathOperator);
-     newCalculation.mathOperatorInput = mathOperator;
- }
+// Function to read which math operator button 
+function mathOperators() {
+    let mathOperator = $(this).attr("id")
+    console.log(mathOperator);
+    newCalculation.mathOperatorInput = mathOperator;
+}
+
+// function clearFields() {
+//     document.getElementById("#inputOne").value = '';
+//     document.getElementById("#inputTwo").value = '';
+// }
+
+// function clearButton() {
+//     clearFields();
+// }
 
 
 
  function addCalculation() {
      let inputOne = $('#inputOne').val();
-     let mathOperator = $(this).attr('id');
      let inputTwo = $('#inputTwo').val();
     newCalculation.inputOne = inputOne;
     newCalculation.inputTwo = inputTwo;
-    newCalculation.mathOperatorInput = mathOperator;
 
      console.log('inside addCalculation');
 
@@ -53,14 +64,15 @@ function onReady() {
         .then((response) => {
          console.log('POST /calculations', response);
          // Refresh data from the server
-         getCalculations();  
+         getCalculations();
+        //  clearFields();  
       })
         .catch((error) => {
           console.log('POST /calculations failed!', error);
           // Render error to the DOM
           $('body').append(`
               <h2>
-                  Failed to save calculation! Please make sure all input fileds contain data.
+                  Failed to save calculation! Please make sure all input fields contain data.
               </h2>
           `);
         
@@ -88,16 +100,16 @@ function getCalculations() {
 
              // loop thropugh the array of calculations
              calculationsList.empty();
-             for(let i=0; i<response.length; i++) {
-                 let calculation = response[i];
-                 // Render <li> with each calculation
-                 calculationsList.append(`
-                     <li>
-                         ${calculation.inputOne}  ${calculation.inputTwo} = ${calculation.total}
-                     </li>
-                 `);
+            for(let i=0; i<response.length; i++) {
+                let calculation = response[i];
+                // Render <li> with each calculation
+                calculationsList.append(`
+                    <li>
+                        ${calculation.inputOne}  ${calculation.mathOperatorInput} ${calculation.inputTwo} = ${calculation.total}
+                    </li>
+                `);
 
-             }
+            }
              
          });
  }
